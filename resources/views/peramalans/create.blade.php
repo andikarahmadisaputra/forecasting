@@ -1,0 +1,36 @@
+@extends('adminlte::page')
+
+@section('title', 'Tambah Peramalan')
+
+@section('content_header')
+    <h1 class="m-0 text-dark">Tambah Peramalan</h1>
+@stop
+
+@section('content')
+    <form action="{{route('peramalans.store')}}" method="post">
+        @csrf
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <select name="kategori_id" class="form-control">
+                            @foreach($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{{route('kategoris.index')}}" class="btn btn-default">
+                        Batal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
